@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -7,12 +6,10 @@
     
     <title>miros 💜</title> 
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☯️</text></svg>">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="icon" type="image/png" href="favicon.png">
-
     <style>
         /* === CORE THEME & BACKGROUND === */
         body, html {
@@ -22,7 +19,7 @@
             overflow: hidden; /* Kar taşmasını engeller */
             width: 100%;
             height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, Helvetica, sans-serif; /* Düz, Düzlemsel Font */
         }
 
         /* === PARTICLE SYSTEM (SNOW) === */
@@ -59,43 +56,25 @@
             width: 100%;
         }
 
-        /* === DYNAMIC GLOW (BLOOM) ANIMATION === */
-        @keyframes breathingBloom {
-            0%   { 
-                text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 
-                             0 0 25px rgba(255, 255, 255, 0.2);
-            }
-            50%  { 
-                text-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 
-                             0 0 50px rgba(255, 255, 255, 0.6), 
-                             0 0 75px rgba(255, 255, 255, 0.4), 
-                             0 0 100px rgba(255, 255, 255, 0.2);
-            }
-            100% { 
-                text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 
-                             0 0 25px rgba(255, 255, 255, 0.2);
-            }
-        }
-
         /* === TYPOGRAPHY (Yarışamazsın.) === */
         h1 {
-            /* Elegant Serif Fontu */
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 8vw, 3rem); /* Daha büyük ve iddialı */
-            margin-bottom: 50px;
+            font-size: clamp(2rem, 8vw, 3rem); /* Responsive yazı boyutu */
+            margin-bottom: 40px;
             letter-spacing: 1px;
-            font-weight: 500;
+            font-weight: bold;
             text-align: center;
             user-select: none;
-            /* Bloom (Parlama) Animasyonu Uygula */
-            animation: breathingBloom 5s ease-in-out infinite; 
+            /* Beyaz Bloom (Glow) Efecti */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 
+                         0 0 25px rgba(255, 255, 255, 0.2), 
+                         0 0 50px rgba(255, 255, 255, 0.1);
             text-transform: none; /* Büyük/küçük harfe dokunma */
         }
 
         /* === SOCIAL ICONS NETWORK === */
         .icons {
             display: flex;
-            gap: 40px;
+            gap: 35px;
         }
 
         .icons a {
@@ -120,7 +99,7 @@
         /* === RESPONSIVE DESIGN (MOBILE) === */
         @media (max-width: 480px) {
             .icons a { font-size: 2.3rem; }
-            .icons { gap: 30px; }
+            .icons { gap: 25px; }
             h1 { font-size: 1.9rem; }
         }
     </style>
@@ -187,8 +166,8 @@
         styleSheet.insertRule(`
             @keyframes fall {
                 0%   { transform: translateY(-10vh) translateX(0); }
-                50%  { transform: translateY(50vh) translateX(20px); }
-                100% { transform: translateY(110vh) translateX(-20px); }
+                50%  { transform: translateY(50vh) translateX(15px); }
+                100% { transform: translateY(110vh) translateX(-15px); }
             }
         `, styleSheet.cssRules.length);
 
