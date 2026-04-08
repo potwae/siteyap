@@ -101,10 +101,11 @@
 
     <div class="visitor-counter">
         <i class="fas fa-eye"></i>
-        <span id="visit-count">...</span>
+        <span id="visit-count">Yükleniyor...</span>
     </div>
 
     <script>
+        // Kar Yağışı
         const container = document.getElementById('particles');
         for (let i = 0; i < 70; i++) {
             const p = document.createElement('div');
@@ -117,6 +118,7 @@
             container.appendChild(p);
         }
 
+        // Discord Kopyala
         function copyDiscord(e) {
             e.preventDefault();
             navigator.clipboard.writeText("yakandayim").then(() => {
@@ -124,36 +126,24 @@
             });
         }
 
-        // AKILLI SAYAÇ: ASLA GERİ GİTMEZ
+        // GERÇEK GLOBAL SAYAÇ SİSTEMİ
         function updateCounter() {
             const countElement = document.getElementById('visit-count');
-            const siteID = 'miros_global_fix_v3';
-            
-            // Hafızadaki en yüksek sayıyı al
-            let maxCount = parseInt(localStorage.getItem('miros_max_count')) || 0;
-            
-            // Sayfa açılır açılmaz eldeki en yüksek değeri bas
-            if(maxCount > 0) countElement.innerText = maxCount;
+            // 'miros_global_final' bu senin sitene özel havuzdur.
+            const siteKey = 'miros_global_final_2026'; 
 
-            fetch(`https://api.countapi.xyz/hit/${siteID}/visits`)
+            // API üzerinden global sayıyı çek ve +1 artır
+            fetch(`https://api.countapi.xyz/hit/${siteKey}/visits`)
             .then(res => res.json())
             .then(data => {
-                let apiValue = parseInt(data.value);
-                
-                // Eğer API'den gelen değer, bendeki değerden düşükse güncelleme yapma
-                if (apiValue > maxCount) {
-                    countElement.innerText = apiValue;
-                    localStorage.setItem('miros_max_count', apiValue);
-                } else {
-                    // API düşük gelirse mevcut max değeri +1 yapıp göster (Sadece senin ekranında ilerler)
-                    countElement.innerText = maxCount + 1;
-                    localStorage.setItem('miros_max_count', maxCount + 1);
-                }
+                countElement.innerText = data.value;
             })
             .catch(() => {
-                let fallback = maxCount + 1;
+                // Eğer API'de genel bir sorun olursa manuel artış gösterir
+                let fallback = localStorage.getItem('backup_val') || 10;
+                fallback = parseInt(fallback) + 1;
+                localStorage.setItem('backup_val', fallback);
                 countElement.innerText = fallback;
-                localStorage.setItem('miros_max_count', fallback);
             });
         }
         
