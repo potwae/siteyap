@@ -101,11 +101,10 @@
 
     <div class="visitor-counter">
         <i class="fas fa-eye"></i>
-        <span id="visit-count">0</span>
+        <span id="visit-count">...</span>
     </div>
 
     <script>
-        // Kar Yağışı Motoru
         const container = document.getElementById('particles');
         for (let i = 0; i < 70; i++) {
             const p = document.createElement('div');
@@ -125,27 +124,36 @@
             });
         }
 
-        // HIZLI VE STABİL SAYAÇ SİSTEMİ
+        // AKILLI SAYAÇ: ASLA GERİ GİTMEZ
         function updateCounter() {
             const countElement = document.getElementById('visit-count');
-            const siteID = 'miros_global_hit_v2';
+            const siteID = 'miros_global_fix_v3';
             
-            // 1. ADIM: Hafızadaki son sayıyı göster (Gecikmeyi önler)
-            let cachedCount = localStorage.getItem('miros_last_count') || 120;
-            countElement.innerText = cachedCount;
+            // Hafızadaki en yüksek sayıyı al
+            let maxCount = parseInt(localStorage.getItem('miros_max_count')) || 0;
+            
+            // Sayfa açılır açılmaz eldeki en yüksek değeri bas
+            if(maxCount > 0) countElement.innerText = maxCount;
 
-            // 2. ADIM: API'den gerçek veriyi çek
             fetch(`https://api.countapi.xyz/hit/${siteID}/visits`)
             .then(res => res.json())
             .then(data => {
-                countElement.innerText = data.value;
-                localStorage.setItem('miros_last_count', data.value);
+                let apiValue = parseInt(data.value);
+                
+                // Eğer API'den gelen değer, bendeki değerden düşükse güncelleme yapma
+                if (apiValue > maxCount) {
+                    countElement.innerText = apiValue;
+                    localStorage.setItem('miros_max_count', apiValue);
+                } else {
+                    // API düşük gelirse mevcut max değeri +1 yapıp göster (Sadece senin ekranında ilerler)
+                    countElement.innerText = maxCount + 1;
+                    localStorage.setItem('miros_max_count', maxCount + 1);
+                }
             })
             .catch(() => {
-                // API patlarsa local artırmaya devam et
-                let newLocal = parseInt(cachedCount) + 1;
-                countElement.innerText = newLocal;
-                localStorage.setItem('miros_last_count', newLocal);
+                let fallback = maxCount + 1;
+                countElement.innerText = fallback;
+                localStorage.setItem('miros_max_count', fallback);
             });
         }
         
