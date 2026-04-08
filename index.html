@@ -2,14 +2,9 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <!-- Bu satır sitenin her cihazda (mobil/tablet) düzgün görünmesini sağlar -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>miros ❤︎</title> 
-    
-    <!-- Yin Yang Logosu (GitHub'da favicon.png adında bir resim varsa çalışır) -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <title>miros ❤︎</title> <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- FontAwesome logoları için -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -29,12 +24,12 @@
         }
 
         h1 {
-            font-size: clamp(1.5rem, 8vw, 2.2rem); /* Ekrana göre boyutunu otomatik ayarlar */
+            font-size: clamp(1.8rem, 8vw, 2.5rem);
             margin-bottom: 30px;
             letter-spacing: 1px;
             font-weight: bold;
             text-align: center;
-            /* Glow efekti */
+            /* Yarışamazsın yazısı için sert glow efekti */
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
                          0 0 20px rgba(255, 255, 255, 0.4);
             user-select: none;
@@ -42,32 +37,46 @@
 
         .icons {
             display: flex;
-            gap: 30px;
+            gap: 35px; /* Logolar arası mesafe */
         }
 
         .icons a {
-            font-size: 2.5rem;
+            font-size: 2.8rem; /* Logoları azıcık büyüttüm */
             text-decoration: none;
             transition: transform 0.2s ease, filter 0.2s ease;
             
-            /* Siyah iç, beyaz ince kontür */
+            /* Temel logo stili: İçi siyah */
             color: #000000;
-            -webkit-text-stroke: 1.5px white; /* Çizgileri belirginleştirir */
+            
+            /* Çok ince beyaz stroke (kontür) */
+            -webkit-text-stroke: 1.2px #ffffff;
             
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .icons a:hover {
-            transform: scale(1.15);
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+        /* Instagram Logosuna Özel Ayar (Çok parlamaması için) */
+        .instagram-icon {
+            /* Instagram'ın stroke'unu çok daha ince ve az belirgin yaptım */
+            -webkit-text-stroke: 0.8px rgba(255, 255, 255, 0.6) !important;
+            filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3)) !important;
         }
 
-        /* Mobilde logoların çok büyük kalmaması için */
+        /* Fare üstüne gelince (Hover) efekti */
+        .icons a:hover {
+            transform: scale(1.1); /* Hafif büyüme */
+            /* Glow efekti sadece hoverda belirginleşsin */
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+        }
+
+        /* Mobilde logoların çok büyük kalmaması için responsive ayar */
         @media (max-width: 480px) {
             .icons a {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            .icons {
+                gap: 25px;
             }
         }
     </style>
@@ -80,14 +89,14 @@
         <a href="#" onclick="copyDiscord(event)" title="Discord: yakandayim">
             <i class="fab fa-discord"></i>
         </a>
-        <a href="https://www.instagram.com/zafer4kts" target="_blank" title="Instagram: zafer4kts">
+        <a href="https://www.instagram.com/zafer4kts" target="_blank" title="Instagram: zafer4kts" class="instagram-icon">
             <i class="fab fa-instagram"></i>
         </a>
     </div>
 
     <script>
         function copyDiscord(e) {
-            e.preventDefault();
+            e.preventDefault(); // Sayfanın üste kaymasını engeller
             navigator.clipboard.writeText("yakandayim");
             alert("kullanıcı adını kopyaladım normie, koş dmye kampını kur.");
         }
