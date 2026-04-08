@@ -2,61 +2,73 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fam</title> <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Bu satır sitenin her cihazda (mobil/tablet) düzgün görünmesini sağlar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>miros ❤︎</title> 
+    
+    <!-- Yin Yang Logosu (GitHub'da favicon.png adında bir resim varsa çalışır) -->
+    <link rel="icon" type="image/png" href="favicon.png">
 
+    <!-- FontAwesome logoları için -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #000000; /* Tam siyah arka plan */
+            background-color: #000000;
             color: white;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100%;
             overflow: hidden;
         }
+
         h1 {
-            font-size: 2.2rem; /* Küçültülmüş yazı boyutu */
+            font-size: clamp(1.5rem, 8vw, 2.2rem); /* Ekrana göre boyutunu otomatik ayarlar */
             margin-bottom: 30px;
             letter-spacing: 1px;
             font-weight: bold;
+            text-align: center;
             /* Glow efekti */
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
-                         0 0 20px rgba(255, 255, 255, 0.5), 
-                         0 0 30px rgba(255, 255, 255, 0.3);
+                         0 0 20px rgba(255, 255, 255, 0.4);
+            user-select: none;
         }
+
         .icons {
             display: flex;
-            gap: 25px; /* Logolar arası mesafe */
+            gap: 30px;
         }
+
         .icons a {
-            font-size: 2.5rem; /* Logoların boyutu */
+            font-size: 2.5rem;
             text-decoration: none;
-            transition: transform 0.2s ease, text-shadow 0.2s ease;
+            transition: transform 0.2s ease, filter 0.2s ease;
             
-            /* Siyah logo, beyaz çizgiler efekti: */
-            color: #000000; /* Logonun içi siyah */
+            /* Siyah iç, beyaz ince kontür */
+            color: #000000;
+            -webkit-text-stroke: 1.5px white; /* Çizgileri belirginleştirir */
             
-            /* Beyaz çizgileri oluşturmak için text-shadow ve stroke teknikleri: */
-            text-shadow: 
-                -1px -1px 0 #fff,  
-                 1px -1px 0 #fff,
-                -1px  1px 0 #fff,
-                 1px  1px 0 #fff; /* Çok ince beyaz stroke */
-                 
-            /* Daha belirgin bir "beyaz çizgi" için glow */
-            filter: drop-shadow(0 0 1px rgba(255, 255, 255, 1));
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
         .icons a:hover {
-            transform: scale(1.1); /* Üstüne gelince hafif büyür */
-            /* Glow efekti hoverda artar */
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+        }
+
+        /* Mobilde logoların çok büyük kalmaması için */
+        @media (max-width: 480px) {
+            .icons a {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -65,16 +77,17 @@
     <h1>Yarışamazsın.</h1>
 
     <div class="icons">
-        <a href="#" class="discord" onclick="copyDiscord()" title="Discord: yakandayim">
+        <a href="#" onclick="copyDiscord(event)" title="Discord: yakandayim">
             <i class="fab fa-discord"></i>
         </a>
-        <a href="https://www.instagram.com/zafer4kts" target="_blank" class="instagram" title="Instagram: zafer4kts">
+        <a href="https://www.instagram.com/zafer4kts" target="_blank" title="Instagram: zafer4kts">
             <i class="fab fa-instagram"></i>
         </a>
     </div>
 
     <script>
-        function copyDiscord() {
+        function copyDiscord(e) {
+            e.preventDefault();
             navigator.clipboard.writeText("yakandayim");
             alert("kullanıcı adını kopyaladım normie, koş dmye kampını kur.");
         }
