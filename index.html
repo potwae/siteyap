@@ -101,7 +101,7 @@
 
     <div class="visitor-counter">
         <i class="fas fa-eye"></i>
-        <span id="visit-count">Yükleniyor...</span>
+        <span id="visit-count">...</span>
     </div>
 
     <script>
@@ -118,7 +118,6 @@
             container.appendChild(p);
         }
 
-        // Discord Kopyala
         function copyDiscord(e) {
             e.preventDefault();
             navigator.clipboard.writeText("yakandayim").then(() => {
@@ -126,24 +125,28 @@
             });
         }
 
-        // GERÇEK GLOBAL SAYAÇ SİSTEMİ
+        // HIZLI GLOBAL SAYAÇ
         function updateCounter() {
             const countElement = document.getElementById('visit-count');
-            // 'miros_global_final' bu senin sitene özel havuzdur.
             const siteKey = 'miros_global_final_2026'; 
 
-            // API üzerinden global sayıyı çek ve +1 artır
+            // 1. Önce hafızadaki eski değeri anında bas (0 gecikme)
+            let lastValue = localStorage.getItem('last_global_hit') || '100';
+            countElement.innerText = lastValue;
+
+            // 2. Arka planda API'ye bağlanıp gerçek global sayıyı çek
             fetch(`https://api.countapi.xyz/hit/${siteKey}/visits`)
             .then(res => res.json())
             .then(data => {
+                // Global değeri ekrana bas ve hafızaya kaydet
                 countElement.innerText = data.value;
+                localStorage.setItem('last_global_hit', data.value);
             })
             .catch(() => {
-                // Eğer API'de genel bir sorun olursa manuel artış gösterir
-                let fallback = localStorage.getItem('backup_val') || 10;
-                fallback = parseInt(fallback) + 1;
-                localStorage.setItem('backup_val', fallback);
-                countElement.innerText = fallback;
+                // Hata olursa en azından yerel olarak +1 göster
+                let newVal = parseInt(lastValue) + 1;
+                countElement.innerText = newVal;
+                localStorage.setItem('last_global_hit', newVal);
             });
         }
         
