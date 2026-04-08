@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fam</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Fam</title> <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         body {
             margin: 0;
@@ -19,40 +22,41 @@
             overflow: hidden;
         }
         h1 {
-            font-size: 2.2rem; /* Eskisinden daha küçük */
+            font-size: 2.2rem; /* Küçültülmüş yazı boyutu */
             margin-bottom: 30px;
             letter-spacing: 1px;
             font-weight: bold;
-            /* Glow efekti: */
+            /* Glow efekti */
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
                          0 0 20px rgba(255, 255, 255, 0.5), 
                          0 0 30px rgba(255, 255, 255, 0.3);
         }
         .icons {
             display: flex;
-            gap: 20px; /* Logolar arası mesafe */
+            gap: 25px; /* Logolar arası mesafe */
         }
         .icons a {
-            font-size: 1.5rem; /* Logolar daha küçük */
+            font-size: 2.5rem; /* Logoların boyutu */
             text-decoration: none;
             transition: transform 0.2s ease, text-shadow 0.2s ease;
             
-            /* Siyah logolar, beyaz çizgiler efekti: */
-            background-color: black;
-            color: white; /* Çizgi rengi */
-            width: 50px; /* Logonun etrafındaki daire boyutu */
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%; /* Daire şeklinde */
-            border: 2px solid white; /* Beyaz çizgiler */
+            /* Siyah logo, beyaz çizgiler efekti: */
+            color: #000000; /* Logonun içi siyah */
+            
+            /* Beyaz çizgileri oluşturmak için text-shadow ve stroke teknikleri: */
+            text-shadow: 
+                -1px -1px 0 #fff,  
+                 1px -1px 0 #fff,
+                -1px  1px 0 #fff,
+                 1px  1px 0 #fff; /* Çok ince beyaz stroke */
+                 
+            /* Daha belirgin bir "beyaz çizgi" için glow */
+            filter: drop-shadow(0 0 1px rgba(255, 255, 255, 1));
         }
         .icons a:hover {
             transform: scale(1.1); /* Üstüne gelince hafif büyür */
-            /* Logolara da hafif glow */
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            /* Glow efekti hoverda artar */
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
         }
     </style>
 </head>
