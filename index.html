@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yarışamazsın.</title>
-    <!-- Logolar için FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Fam</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
+            background-color: #000000; /* Tam siyah arka plan */
             color: white;
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -21,27 +19,41 @@
             overflow: hidden;
         }
         h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            font-size: 2.2rem; /* Eskisinden daha küçük */
+            margin-bottom: 30px;
+            letter-spacing: 1px;
             font-weight: bold;
+            /* Glow efekti: */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
+                         0 0 20px rgba(255, 255, 255, 0.5), 
+                         0 0 30px rgba(255, 255, 255, 0.3);
         }
         .icons {
             display: flex;
-            gap: 25px;
+            gap: 20px; /* Logolar arası mesafe */
         }
         .icons a {
-            color: white;
-            font-size: 2rem;
+            font-size: 1.5rem; /* Logolar daha küçük */
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.2s ease;
+            transition: transform 0.2s ease, text-shadow 0.2s ease;
+            
+            /* Siyah logolar, beyaz çizgiler efekti: */
+            background-color: black;
+            color: white; /* Çizgi rengi */
+            width: 50px; /* Logonun etrafındaki daire boyutu */
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%; /* Daire şeklinde */
+            border: 2px solid white; /* Beyaz çizgiler */
         }
         .icons a:hover {
             transform: scale(1.1); /* Üstüne gelince hafif büyür */
+            /* Logolara da hafif glow */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
-        /* Fare üstüne gelince logoların kendi rengini alması için */
-        .discord:hover { color: #5865F2; }
-        .instagram:hover { color: #E1306C; }
     </style>
 </head>
 <body>
@@ -49,11 +61,9 @@
     <h1>Yarışamazsın.</h1>
 
     <div class="icons">
-        <!-- Discord: Tıklayınca nick kopyalar -->
         <a href="#" class="discord" onclick="copyDiscord()" title="Discord: yakandayim">
             <i class="fab fa-discord"></i>
         </a>
-        <!-- Instagram: Profile gider -->
         <a href="https://www.instagram.com/zafer4kts" target="_blank" class="instagram" title="Instagram: zafer4kts">
             <i class="fab fa-instagram"></i>
         </a>
@@ -62,7 +72,7 @@
     <script>
         function copyDiscord() {
             navigator.clipboard.writeText("yakandayim");
-            alert("Discord kullanıcı adı 'yakandayim' kopyalandı!");
+            alert("kullanıcı adını kopyaladım normie, koş dmye kampını kur.");
         }
     </script>
 
