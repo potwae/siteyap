@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>miros ❤︎</title> <link rel="icon" type="image/png" href="favicon.png">
+    <title>miros ❤︎</title> 
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☯️</text></svg>">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -11,7 +13,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #000000;
+            background-color: #000000; /* Tam siyah arka plan */
             color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
@@ -24,7 +26,7 @@
         }
 
         h1 {
-            font-size: clamp(1.8rem, 8vw, 2.5rem);
+            font-size: clamp(1.8rem, 8vw, 2.5rem); /* Responsive yazı boyutu */
             margin-bottom: 30px;
             letter-spacing: 1px;
             font-weight: bold;
@@ -41,14 +43,14 @@
         }
 
         .icons a {
-            font-size: 2.8rem; /* Logoları azıcık büyüttüm */
+            font-size: 2.8rem; /* Logoların boyutu */
             text-decoration: none;
             transition: transform 0.2s ease, filter 0.2s ease;
             
             /* Temel logo stili: İçi siyah */
             color: #000000;
             
-            /* Çok ince beyaz stroke (kontür) */
+            /* Çok ince beyaz stroke (kontür) - Discord ve Instagram için aynı */
             -webkit-text-stroke: 1.2px #ffffff;
             
             display: flex;
@@ -56,14 +58,7 @@
             align-items: center;
         }
 
-        /* Instagram Logosuna Özel Ayar (Çok parlamaması için) */
-        .instagram-icon {
-            /* Instagram'ın stroke'unu çok daha ince ve az belirgin yaptım */
-            -webkit-text-stroke: 0.8px rgba(255, 255, 255, 0.6) !important;
-            filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3)) !important;
-        }
-
-        /* Fare üstüne gelince (Hover) efekti */
+        /* Fare üstüne gelince (Hover) efekti - Her iki logo için aynı */
         .icons a:hover {
             transform: scale(1.1); /* Hafif büyüme */
             /* Glow efekti sadece hoverda belirginleşsin */
@@ -89,7 +84,7 @@
         <a href="#" onclick="copyDiscord(event)" title="Discord: yakandayim">
             <i class="fab fa-discord"></i>
         </a>
-        <a href="https://www.instagram.com/zafer4kts" target="_blank" title="Instagram: zafer4kts" class="instagram-icon">
+        <a href="https://www.instagram.com/zafer4kts" target="_blank" title="Instagram: zafer4kts">
             <i class="fab fa-instagram"></i>
         </a>
     </div>
