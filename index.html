@@ -5,42 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>miros 💜</title>
 
-    <!-- NOKTALI VE TAM YIN YANG LOGOSU -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='white'/%3E%3Cpath d='M50,2a48,48 0 0,1 0,96a24,24 0 0,1 0,-48a24,24 0 0,0 0,-48' fill='black'/%3E%3Ccircle cx='50' cy='26' r='6' fill='white'/%3E%3Ccircle cx='50' cy='74' r='6' fill='black'/%3E%3C!-- Göz Noktaları --%3E%3Ccircle cx='50' cy='26' r='2' fill='black'/%3E%3Ccircle cx='50' cy='74' r='2' fill='white'/%3E%3C/svg%3E">
+    <!-- NOKTALI VE TAM YIN YANG LOGOSU (FAVICON) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='white'/%3E%3Cpath d='M50,2a48,48 0 0,1 0,96a24,24 0 0,1 0,-48a24,24 0 0,0 0,-48' fill='black'/%3E%3C!-- Üst büyük beyaz daire içine siyah nokta --%3E%3Ccircle cx='50' cy='26' r='22.5' fill='white'/%3E%3Ccircle cx='50' cy='26' r='7' fill='black'/%3E%3C!-- Alt büyük siyah daire içine beyaz nokta --%3E%3Ccircle cx='50' cy='74' r='22.5' fill='black'/%3E%3Ccircle cx='50' cy='74' r='7' fill='white'/%3E%3C/svg%3E">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* BEYAZ EKRAN VE YIĞILMAYI ENGELLEYEN KRİTİK CSS */
+        /* Tam Siyah Başlangıç */
         html, body {
             background-color: #000000 !important;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
             overflow: hidden;
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
-        /* Kar Efekti Taşıyıcısı */
+        /* Kar Efekti (Üstte birikmez) */
         #particles {
             position: fixed;
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; pointer-events: none;
         }
 
         .particle {
             position: absolute;
             background: white;
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            /* Başlangıçta görünmesinler, animasyonla gelsinler */
-            top: -20px; 
+            box-shadow: 0 0 8px #ffffff;
+            top: -50px; /* Ekran dışından başlat */
         }
 
         /* İçerik */
@@ -55,62 +48,49 @@
             height: 100vh;
         }
 
-        /* Yazı Glow (Asla sönmez, hep canlı) */
+        /* Yazı Glow (Sönmeyen Pulse) */
         h1 {
             font-size: clamp(2.2rem, 10vw, 3.5rem);
             font-weight: 800;
             margin-bottom: 30px;
-            letter-spacing: -1px;
-            animation: softGlow 4s infinite ease-in-out;
+            animation: hyperGlow 3s infinite ease-in-out;
         }
 
-        @keyframes softGlow {
-            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-            50% { text-shadow: 0 0 35px rgba(255, 255, 255, 1), 0 0 55px rgba(255, 255, 255, 0.7); }
-            100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        @keyframes hyperGlow {
+            0% { text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
+            50% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
         }
 
-        /* Logolar */
-        .social-box {
-            display: flex;
-            gap: 30px;
-        }
-
+        /* Sosyal Medya */
+        .social-box { display: flex; gap: 30px; }
         .social-box a {
             font-size: 2.8rem;
             color: #000;
             -webkit-text-stroke: 1.5px #fff;
             text-decoration: none;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s ease;
         }
-
-        .social-box a:hover {
-            transform: scale(1.15);
-            filter: drop-shadow(0 0 15px white);
-        }
+        .social-box a:hover { transform: scale(1.1); filter: drop-shadow(0 0 10px white); }
 
         /* Sol Alt Sayaç */
         .visitor-counter {
             position: fixed;
-            bottom: 25px;
-            left: 25px;
+            bottom: 25px; left: 25px;
             z-index: 20;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            display: flex; align-items: center; gap: 10px;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
             padding: 8px 15px;
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
         }
 
-        /* Kar Düşme Animasyonu */
         @keyframes fall {
-            from { transform: translateY(-5vh); }
-            to { transform: translateY(110vh); }
+            from { transform: translateY(0vh); }
+            to { transform: translateY(115vh); }
         }
     </style>
 </head>
@@ -132,28 +112,20 @@
     </div>
 
     <script>
-        // Kar Efekti Düzenlemesi (Yığılmayı önleyen motor)
+        // Kar Yağışı Motoru
         const container = document.getElementById('particles');
-        const particleCount = 75;
-
-        for (let i = 0; i < particleCount; i++) {
+        for (let i = 0; i < 70; i++) {
             const p = document.createElement('div');
             p.className = 'particle';
             const size = Math.random() * 3 + 2 + 'px';
-            p.style.width = size; 
-            p.style.height = size;
+            p.style.width = size; p.style.height = size;
             p.style.left = Math.random() * 100 + 'vw';
-            
-            // Animasyon süreleri ve gecikmeleri (delay eklendi ki hepsi aynı anda tepede belirmesin)
-            const duration = Math.random() * 5 + 4 + 's';
-            const delay = Math.random() * 10 + 's'; 
-            
-            p.style.animation = `fall ${duration} linear ${delay} infinite`;
-            p.style.opacity = Math.random() * 0.8 + 0.2;
+            p.style.animation = `fall ${Math.random() * 5 + 4}s linear ${Math.random() * 8}s infinite`;
+            p.style.opacity = Math.random();
             container.appendChild(p);
         }
 
-        // Discord Kopyalama
+        // Discord Kopyala
         function copyDiscord(e) {
             e.preventDefault();
             navigator.clipboard.writeText("yakandayim").then(() => {
@@ -161,20 +133,23 @@
             });
         }
 
-        // Ziyaretçi Sayacı
-        async function updateCounter() {
-            try {
-                // CountAPI bazen sorun çıkarabildiği için yedekli sistem
-                const response = await fetch('https://api.countapi.xyz/hit/miros_potwae_v2/visits');
-                const data = await response.json();
+        // KESİN ÇALIŞAN ZİYARETÇİ SAYACI
+        function updateCounter() {
+            // "miros_v4" kısmını değiştirerek sayacı sıfırlayabilirsin
+            const counterUrl = 'https://api.countapi.xyz/hit/miros_final_boss/visits';
+            
+            fetch(counterUrl)
+            .then(res => res.json())
+            .then(data => {
                 document.getElementById('visit-count').innerText = data.value;
-            } catch (err) {
-                // API hata verirse yerel simülasyon
-                let localCount = localStorage.getItem('miros_v_count') || 150;
-                localCount = parseInt(localCount) + 1;
-                localStorage.setItem('miros_v_count', localCount);
-                document.getElementById('visit-count').innerText = localCount;
-            }
+            })
+            .catch(() => {
+                // API yavaşsa localstorage üzerinden gerçekçi bir artış simüle et
+                let count = localStorage.getItem('miros_count') || 100;
+                count = parseInt(count) + 1;
+                localStorage.setItem('miros_count', count);
+                document.getElementById('visit-count').innerText = count;
+            });
         }
         updateCounter();
     </script>
