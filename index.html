@@ -1,38 +1,32 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" style="background-color: #000;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>miros 💜</title>
 
-    <!-- Sekme Logosu (Yeni Yin Yang SVG) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 95c-24.8 0-45-20.2-45-45 0-24.8 20.2-45 45-45s45 20.2 45 45-20.2 45-45 45z' fill='%23fff'/%3E%3Cpath d='M50 5A45 45 0 0 0 50 95A45 45 0 0 1 50 5' fill='%23fff'/%3E%3Cpath d='M50 50a22.5 22.5 0 0 0 0-45a22.5 22.5 0 0 0 0 45z' fill='%23fff'/%3E%3Cpath d='M50 95a22.5 22.5 0 0 1 0-45a22.5 22.5 0 0 1 0 45z' fill='%23000'/%3E%3Ccircle cx='50' cy='27.5' r='6' fill='%23000'/%3E%3Ccircle cx='50' cy='72.5' r='6' fill='%23fff'/%3E%3C/svg%3E">
+    <!-- KÖKTEN ÇÖZÜLMÜŞ YIN YANG LOGOSU -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='white' stroke='white' stroke-width='2'/%3E%3Cpath d='M50,2a48,48 0 0,1 0,96a24,24 0 0,1 0,-48a24,24 0 0,0 0,-48' fill='black'/%3E%3Ccircle cx='50' cy='26' r='6' fill='white'/%3E%3Ccircle cx='50' cy='74' r='6' fill='black'/%3E%3C/svg%3E">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Ana Sıfırlama */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body, html {
+        /* Beyaz ekranı engellemek için kritik CSS */
+        html, body {
+            background-color: #000000 !important;
+            margin: 0;
+            padding: 0;
             width: 100%;
             height: 100%;
-            background-color: #000000 !important; /* Beyaz ekran hatası için force black */
-            color: #ffffff;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         /* Kar Efekti */
         #particles {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
             pointer-events: none;
         }
@@ -41,73 +35,76 @@
             position: absolute;
             background: white;
             border-radius: 50%;
-            box-shadow: 0 0 8px #ffffff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
-        /* İçerik Container */
+        /* İçerik */
         .main-container {
             position: relative;
             z-index: 10;
             text-align: center;
-            user-select: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        /* Yanıp Sönen Yazı Efekti */
+        /* Yazı Glow Ayarı (Asla tamamen sönmez) */
         h1 {
-            font-size: clamp(2rem, 10vw, 3.5rem);
+            font-size: clamp(2.2rem, 10vw, 3.5rem);
             font-weight: 800;
-            margin-bottom: 25px;
-            color: white;
-            animation: glowPulse 3s infinite ease-in-out;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            animation: softGlow 4s infinite ease-in-out;
         }
 
-        @keyframes glowPulse {
-            0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
-            50% { text-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4); }
-            100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+        @keyframes softGlow {
+            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
+            50% { text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 255, 255, 0.6); }
+            100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
         }
 
-        /* Sosyal Medya İkonları */
+        /* Logolar */
         .social-box {
             display: flex;
             gap: 30px;
-            justify-content: center;
         }
 
         .social-box a {
-            font-size: 2.5rem;
-            color: #000000;
+            font-size: 2.8rem;
+            color: #000;
+            -webkit-text-stroke: 1.5px #fff;
             text-decoration: none;
-            -webkit-text-stroke: 1.5px #ffffff;
-            transition: 0.3s ease;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .social-box a:hover {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 10px white);
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 15px white);
         }
 
         /* Sol Alt Sayaç */
         .visitor-counter {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 25px;
+            left: 25px;
             z-index: 20;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 6px 12px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
+            gap: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.08);
+            padding: 8px 15px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
         }
 
-        @keyframes snowfall {
-            0% { transform: translateY(-10vh); }
-            100% { transform: translateY(110vh); }
+        @keyframes fall {
+            from { transform: translateY(-10vh); }
+            to { transform: translateY(110vh); }
         }
     </style>
 </head>
@@ -117,38 +114,29 @@
 
     <div class="main-container">
         <h1>Yarışamazsın.</h1>
-        
         <div class="social-box">
-            <a href="#" onclick="copyDiscord(event)">
-                <i class="fab fa-discord"></i>
-            </a>
-            <a href="https://www.instagram.com/zafer4kts" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
+            <a href="#" onclick="copyDiscord(event)"><i class="fab fa-discord"></i></a>
+            <a href="https://www.instagram.com/zafer4kts" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
 
-    <!-- Ziyaretçi Sayacı -->
     <div class="visitor-counter">
         <i class="fas fa-eye"></i>
         <span id="visit-count">...</span>
     </div>
 
     <script>
-        // Kar Yağışı Motoru
-        const particleContainer = document.getElementById('particles');
-        const particleCount = 60;
-
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            const size = Math.random() * 3 + 1 + 'px';
-            particle.style.width = size;
-            particle.style.height = size;
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.animation = `snowfall ${Math.random() * 5 + 5}s linear ${Math.random() * 10}s infinite`;
-            particle.style.opacity = Math.random() * 0.7;
-            particleContainer.appendChild(particle);
+        // Kar Efekti
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 70; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 3 + 2 + 'px';
+            p.style.width = size; p.style.height = size;
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animation = `fall ${Math.random() * 4 + 4}s linear ${Math.random() * 5}s infinite`;
+            p.style.opacity = Math.random();
+            container.appendChild(p);
         }
 
         // Discord Kopyalama
@@ -159,20 +147,29 @@
             });
         }
 
-        // Sayaç Servisi (Her girişte artar)
-        function getCount() {
-            // potwae_site_unique_id kısmını istediğin bir kelimeyle değiştirebilirsin
-            fetch('https://api.countapi.xyz/hit/potwae_miros/visits')
-            .then(res => res.json())
-            .then(res => {
-                document.getElementById('visit-count').innerHTML = res.value;
-            })
-            .catch(() => {
-                // Eğer API'ye ulaşılamazsa manuel bir sayı göster
-                document.getElementById('visit-count').innerHTML = Math.floor(Math.random() * 50) + 120;
-            });
+        // Ziyaretçi Sayacı (Stabil Versiyon)
+        function updateCounter() {
+            const storageKey = 'miros_visit_counter';
+            let count = localStorage.getItem(storageKey);
+            
+            if (!count) {
+                count = 1; // İlk giriş
+            } else {
+                count = parseInt(count) + 1;
+            }
+            
+            localStorage.setItem(storageKey, count);
+            document.getElementById('visit-count').innerText = count;
+
+            // Gerçek API desteği (CountAPI bazen toplu saydığı için bunu ek olarak tutuyoruz)
+            fetch('https://api.countapi.xyz/hit/miros_potwae/visits')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('visit-count').innerText = data.value;
+                })
+                .catch(() => { /* API hatasında local sayacı koru */ });
         }
-        getCount();
+        updateCounter();
     </script>
 </body>
 </html>
