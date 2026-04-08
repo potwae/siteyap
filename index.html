@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>miros 💜</title>
 
-    <!-- NOKTALI VE TAM YIN YANG LOGOSU (FAVICON) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='white'/%3E%3Cpath d='M50,2a48,48 0 0,1 0,96a24,24 0 0,1 0,-48a24,24 0 0,0 0,-48' fill='black'/%3E%3C!-- Üst büyük beyaz daire içine siyah nokta --%3E%3Ccircle cx='50' cy='26' r='22.5' fill='white'/%3E%3Ccircle cx='50' cy='26' r='7' fill='black'/%3E%3C!-- Alt büyük siyah daire içine beyaz nokta --%3E%3Ccircle cx='50' cy='74' r='22.5' fill='black'/%3E%3Ccircle cx='50' cy='74' r='7' fill='white'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='white'/%3E%3Cpath d='M50,2a48,48 0 0,1 0,96a24,24 0 0,1 0,-48a24,24 0 0,0 0,-48' fill='black'/%3E%3Ccircle cx='50' cy='26' r='22.5' fill='white'/%3E%3Ccircle cx='50' cy='26' r='7' fill='black'/%3E%3Ccircle cx='50' cy='74' r='22.5' fill='black'/%3E%3Ccircle cx='50' cy='74' r='7' fill='white'/%3E%3C/svg%3E">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Tam Siyah Başlangıç */
+        /* BEYAZ EKRAN ENGELLEYİCİ */
         html, body {
             background-color: #000000 !important;
             margin: 0; padding: 0;
@@ -21,7 +20,7 @@
             font-family: 'Segoe UI', Arial, sans-serif;
         }
 
-        /* Kar Efekti (Üstte birikmez) */
+        /* Kar Efekti */
         #particles {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -33,7 +32,7 @@
             background: white;
             border-radius: 50%;
             box-shadow: 0 0 8px #ffffff;
-            top: -50px; /* Ekran dışından başlat */
+            top: -50px; 
         }
 
         /* İçerik */
@@ -48,12 +47,12 @@
             height: 100vh;
         }
 
-        /* Yazı Glow (Sönmeyen Pulse) */
+        /* Yazı Glow (Soft Pulse) */
         h1 {
             font-size: clamp(2.2rem, 10vw, 3.5rem);
             font-weight: 800;
             margin-bottom: 30px;
-            animation: hyperGlow 3s infinite ease-in-out;
+            animation: hyperGlow 4s infinite ease-in-out;
         }
 
         @keyframes hyperGlow {
@@ -133,24 +132,26 @@
             });
         }
 
-        // KESİN ÇALIŞAN ZİYARETÇİ SAYACI
+        // === STABİL ZİYARETÇİ SAYACI (HER GİRİŞTE +1) ===
         function updateCounter() {
-            // "miros_v4" kısmını değiştirerek sayacı sıfırlayabilirsin
-            const counterUrl = 'https://api.countapi.xyz/hit/miros_final_boss/visits';
-            
-            fetch(counterUrl)
+            // Siten için benzersiz ID
+            const siteID = 'miros_global_hit_v1';
+            const countElement = document.getElementById('visit-count');
+
+            fetch(`https://api.countapi.xyz/hit/${siteID}/visits`)
             .then(res => res.json())
             .then(data => {
-                document.getElementById('visit-count').innerText = data.value;
+                countElement.innerText = data.value;
             })
             .catch(() => {
-                // API yavaşsa localstorage üzerinden gerçekçi bir artış simüle et
-                let count = localStorage.getItem('miros_count') || 100;
-                count = parseInt(count) + 1;
-                localStorage.setItem('miros_count', count);
-                document.getElementById('visit-count').innerText = count;
+                // API hata verirse yedek olarak tarayıcı sayacı devreye girer
+                let currentCount = localStorage.getItem('miros_backup_counter') || 1;
+                currentCount = parseInt(currentCount) + 1;
+                localStorage.setItem('miros_backup_counter', currentCount);
+                countElement.innerText = currentCount;
             });
         }
+        
         updateCounter();
     </script>
 </body>
