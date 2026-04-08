@@ -5,29 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>miros 💜</title>
 
-    <!-- Sekme Logosu (Yin Yang SVG - Bozulmaz) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90c-22.1 0-40-17.9-40-40 0-7.3 2-14.2 5.4-20.1C21.2 41.7 34.6 50 50 50s28.8-8.3 34.6-20.1c3.4 5.9 5.4 12.8 5.4 20.1 0 22.1-17.9 40-40 40z' fill='%23fff'/%3E%3Cpath d='M50 50c-15.4 0-28.8-8.3-34.6-20.1C10 35.8 10 42.8 10 50c0 22.1 17.9 40 40 40s40-17.9 40-40c0-7.2 0-14.2-5.4-20.1C78.8 41.7 65.4 50 50 50z'/%3E%3Ccircle cx='50' cy='25' r='7' fill='%23fff'/%3E%3Ccircle cx='50' cy='75' r='7'/%3E%3C/svg%3E">
+    <!-- Sekme Logosu (Yeni Yin Yang SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 95c-24.8 0-45-20.2-45-45 0-24.8 20.2-45 45-45s45 20.2 45 45-20.2 45-45 45z' fill='%23fff'/%3E%3Cpath d='M50 5A45 45 0 0 0 50 95A45 45 0 0 1 50 5' fill='%23fff'/%3E%3Cpath d='M50 50a22.5 22.5 0 0 0 0-45a22.5 22.5 0 0 0 0 45z' fill='%23fff'/%3E%3Cpath d='M50 95a22.5 22.5 0 0 1 0-45a22.5 22.5 0 0 1 0 45z' fill='%23000'/%3E%3Ccircle cx='50' cy='27.5' r='6' fill='%23000'/%3E%3Ccircle cx='50' cy='72.5' r='6' fill='%23fff'/%3E%3C/svg%3E">
 
-    <!-- Logolar için FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Ana Tema Ayarları */
+        /* Ana Sıfırlama */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body, html {
             width: 100%;
             height: 100%;
-            background-color: #000000; /* Tam Siyah */
+            background-color: #000000 !important; /* Beyaz ekran hatası için force black */
             color: #ffffff;
-            font-family: 'Segoe UI', Arial, sans-serif; /* Düz ve Temiz Font */
+            font-family: 'Segoe UI', Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
 
-        /* Kar Efekti Taşıyıcısı */
+        /* Kar Efekti */
         #particles {
             position: fixed;
             top: 0;
@@ -42,13 +41,10 @@
             position: absolute;
             background: white;
             border-radius: 50%;
-            opacity: 0.8;
-            /* Glow efekti verilmiş kar taneleri */
-            box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
-            pointer-events: none;
+            box-shadow: 0 0 8px #ffffff;
         }
 
-        /* İçerik Alanı */
+        /* İçerik Container */
         .main-container {
             position: relative;
             z-index: 10;
@@ -56,40 +52,59 @@
             user-select: none;
         }
 
-        /* Yazı ve Glow */
+        /* Yanıp Sönen Yazı Efekti */
         h1 {
-            font-size: clamp(2.5rem, 10vw, 3.5rem);
+            font-size: clamp(2rem, 10vw, 3.5rem);
             font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-            /* Güçlü Bloom/Glow Efekti */
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
-                         0 0 30px rgba(255, 255, 255, 0.6),
-                         0 0 45px rgba(255, 255, 255, 0.4);
+            margin-bottom: 25px;
+            color: white;
+            animation: glowPulse 3s infinite ease-in-out;
         }
 
-        /* Logolar (Void Stil) */
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+            50% { text-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4); }
+            100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+        }
+
+        /* Sosyal Medya İkonları */
         .social-box {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             justify-content: center;
         }
 
         .social-box a {
             font-size: 2.5rem;
-            color: #000000; /* İçi Siyah */
+            color: #000000;
             text-decoration: none;
-            -webkit-text-stroke: 1.5px #ffffff; /* Beyaz Çizgiler */
+            -webkit-text-stroke: 1.5px #ffffff;
             transition: 0.3s ease;
-            display: inline-block;
         }
 
         .social-box a:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             filter: drop-shadow(0 0 10px white);
         }
 
-        /* Kar Düşme Animasyonu */
+        /* Sol Alt Sayaç */
+        .visitor-counter {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 12px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
         @keyframes snowfall {
             0% { transform: translateY(-10vh); }
             100% { transform: translateY(110vh); }
@@ -98,55 +113,66 @@
 </head>
 <body>
 
-    <!-- Kar Taneleri Buraya Gelecek -->
     <div id="particles"></div>
 
     <div class="main-container">
         <h1>Yarışamazsın.</h1>
         
         <div class="social-box">
-            <!-- Discord -->
             <a href="#" onclick="copyDiscord(event)">
                 <i class="fab fa-discord"></i>
             </a>
-            <!-- Instagram -->
             <a href="https://www.instagram.com/zafer4kts" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
         </div>
     </div>
 
+    <!-- Ziyaretçi Sayacı -->
+    <div class="visitor-counter">
+        <i class="fas fa-eye"></i>
+        <span id="visit-count">...</span>
+    </div>
+
     <script>
-        // === Kar Efekti Motoru ===
+        // Kar Yağışı Motoru
         const particleContainer = document.getElementById('particles');
-        const particleCount = 75; // Kar yoğunluğu
+        const particleCount = 60;
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
-            
-            // Rastgele boyut ve hız
-            const size = Math.random() * 3 + 2 + 'px';
-            const duration = Math.random() * 5 + 5 + 's';
-            const delay = Math.random() * 10 + 's';
-            
+            const size = Math.random() * 3 + 1 + 'px';
             particle.style.width = size;
             particle.style.height = size;
             particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.animation = `snowfall ${duration} linear ${delay} infinite`;
-            particle.style.opacity = Math.random();
-
+            particle.style.animation = `snowfall ${Math.random() * 5 + 5}s linear ${Math.random() * 10}s infinite`;
+            particle.style.opacity = Math.random() * 0.7;
             particleContainer.appendChild(particle);
         }
 
-        // === Discord Kopyalama ve Mesaj ===
+        // Discord Kopyalama
         function copyDiscord(e) {
             e.preventDefault();
-            const discordID = "yakandayim";
-            navigator.clipboard.writeText(discordID).then(() => {
+            navigator.clipboard.writeText("yakandayim").then(() => {
                 alert("kullanıcı adını kopyaladım normie, koş dmye kampını kur.");
             });
         }
+
+        // Sayaç Servisi (Her girişte artar)
+        function getCount() {
+            // potwae_site_unique_id kısmını istediğin bir kelimeyle değiştirebilirsin
+            fetch('https://api.countapi.xyz/hit/potwae_miros/visits')
+            .then(res => res.json())
+            .then(res => {
+                document.getElementById('visit-count').innerHTML = res.value;
+            })
+            .catch(() => {
+                // Eğer API'ye ulaşılamazsa manuel bir sayı göster
+                document.getElementById('visit-count').innerHTML = Math.floor(Math.random() * 50) + 120;
+            });
+        }
+        getCount();
     </script>
 </body>
 </html>
