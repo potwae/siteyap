@@ -6,11 +6,9 @@
     <title>miros 💜</title>
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='white'/%3E%3Cpath d='M50,2a48,48 0 0,1 0,96a24,24 0 0,1 0,-48a24,24 0 0,0 0,-48' fill='black'/%3E%3Ccircle cx='50' cy='26' r='22.5' fill='white'/%3E%3Ccircle cx='50' cy='26' r='7' fill='black'/%3E%3Ccircle cx='50' cy='74' r='22.5' fill='black'/%3E%3Ccircle cx='50' cy='74' r='7' fill='white'/%3E%3C/svg%3E">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Siyah Başlangıç */
         html, body {
             background-color: #000000 !important;
             margin: 0; padding: 0;
@@ -20,7 +18,6 @@
             font-family: 'Segoe UI', Arial, sans-serif;
         }
 
-        /* Kar Efekti */
         #particles {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -35,7 +32,6 @@
             top: -50px; 
         }
 
-        /* Ana İçerik */
         .main-container {
             position: relative;
             z-index: 10;
@@ -60,7 +56,6 @@
             100% { text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
         }
 
-        /* Sosyal Medya */
         .social-box { display: flex; gap: 30px; }
         .social-box a {
             font-size: 2.8rem;
@@ -71,7 +66,6 @@
         }
         .social-box a:hover { transform: scale(1.1); filter: drop-shadow(0 0 10px white); }
 
-        /* Sol Alt Kısım (Soru İşareti ve Tooltip) */
         .visitor-counter {
             position: fixed;
             bottom: 25px; left: 25px;
@@ -88,40 +82,62 @@
             transition: 0.3s;
         }
 
-        .visitor-counter:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        /* Tooltip (Açıklama Kutusu) */
         .visitor-counter::after {
             content: "tanırlar brom";
             position: absolute;
-            bottom: 50px;
-            left: 50%;
+            bottom: 50px; left: 50%;
             transform: translateX(-50%);
-            background: #fff;
-            color: #000;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
+            background: #fff; color: #000;
+            padding: 5px 12px; border-radius: 8px;
+            font-size: 0.85rem; font-weight: 600;
+            white-space: nowrap; opacity: 0;
+            visibility: hidden; transition: 0.3s;
         }
 
-        .visitor-counter:hover::after {
-            opacity: 1;
-            visibility: visible;
-            bottom: 60px;
+        .visitor-counter:hover::after { opacity: 1; visibility: visible; bottom: 60px; }
+
+        /* Müzik Çalar CSS */
+        .footer-container {
+            position: fixed;
+            bottom: 20px; left: 0; width: 100%;
+            display: flex; justify-content: center;
+            align-items: center; z-index: 1000;
         }
 
-        @keyframes fall {
-            from { transform: translateY(0vh); }
-            to { transform: translateY(115vh); }
+        .music-player {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px; border-radius: 50px;
+            display: flex; align-items: center; gap: 15px;
+            border: 1px solid #333; backdrop-filter: blur(5px);
         }
+
+        .song-cover {
+            width: 40px; height: 40px; border-radius: 50%;
+            object-fit: cover; animation: rotate 5s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .song-info { display: flex; align-items: center; gap: 10px; color: white; }
+        .song-details { display: flex; flex-direction: column; }
+        .song-title { font-weight: bold; font-size: 14px; }
+        .artist-name { font-size: 11px; color: #aaa; }
+        .controls { display: flex; align-items: center; gap: 10px; }
+
+        #playBtn {
+            background: #fff; border: none; padding: 5px 15px;
+            border-radius: 20px; cursor: pointer; font-weight: bold;
+        }
+
+        #volumeSlider { cursor: pointer; width: 80px; }
+
+        .bottom-right-tag {
+            position: absolute; right: 30px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px; letter-spacing: 2px;
+        }
+
+        @keyframes fall { from { transform: translateY(0vh); } to { transform: translateY(115vh); } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -140,6 +156,27 @@
         <i class="fas fa-eye"></i>
         <span>?</span>
     </div>
+
+    <div class="footer-container">
+        <div class="music-player">
+            <div class="song-info">
+                <img src="https://i.ytimg.com/vi/_CcWC8CTZbw/maxresdefault.jpg" alt="LAYLOW Kapak" class="song-cover">
+                <div class="song-details">
+                    <span class="song-title">LAYLOW</span>
+                    <span class="artist-name">buraksn</span>
+                </div>
+            </div>
+            <div class="controls">
+                <button onclick="togglePlay()" id="playBtn">Oynat</button>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+            </div>
+        </div>
+        <div class="bottom-right-tag">1891</div>
+    </div>
+
+    <audio id="myAudio" loop>
+        <source src="laylow.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         // Kar Yağışı Motoru
@@ -162,172 +199,28 @@
                 alert("kullanıcı adını kopyaladım normie, koş dmye kampını kur.");
             });
         }
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="tr" style="background-color: #000;">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>miros 💜</title>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='white'/%3E%3Cpath d='M50,2a48,48 0 0,1 0,96a24,24 0 0,1 0,-48a24,24 0 0,0 0,-48' fill='black'/%3E%3Ccircle cx='50' cy='26' r='22.5' fill='white'/%3E%3Ccircle cx='50' cy='26' r='7' fill='black'/%3E%3Ccircle cx='50' cy='74' r='22.5' fill='black'/%3E%3Ccircle cx='50' cy='74' r='7' fill='white'/%3E%3C/svg%3E">
+        // Müzik Kontrol
+        const audio = document.getElementById("myAudio");
+        const playBtn = document.getElementById("playBtn");
+        const volumeSlider = document.getElementById("volumeSlider");
+        const cover = document.querySelector(".song-cover");
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* Siyah Başlangıç */
-        html, body {
-            background-color: #000000 !important;
-            margin: 0; padding: 0;
-            width: 100%; height: 100%;
-            overflow: hidden;
-            color: #ffffff;
-            font-family: 'Segoe UI', Arial, sans-serif;
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerText = "Durdur";
+                cover.style.animationPlayState = "running";
+            } else {
+                audio.pause();
+                playBtn.innerText = "Oynat";
+                cover.style.animationPlayState = "paused";
+            }
         }
 
-        /* Kar Efekti */
-        #particles {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #ffffff;
-            top: -50px; 
-        }
-
-        /* Ana İçerik */
-        .main-container {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        h1 {
-            font-size: clamp(2.2rem, 10vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 30px;
-            animation: hyperGlow 4s infinite ease-in-out;
-        }
-
-        @keyframes hyperGlow {
-            0% { text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
-            50% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.5); }
-            100% { text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
-        }
-
-        /* Sosyal Medya */
-        .social-box { display: flex; gap: 30px; }
-        .social-box a {
-            font-size: 2.8rem;
-            color: #000;
-            -webkit-text-stroke: 1.5px #fff;
-            text-decoration: none;
-            transition: 0.3s ease;
-        }
-        .social-box a:hover { transform: scale(1.1); filter: drop-shadow(0 0 10px white); }
-
-        /* Sol Alt Kısım (Soru İşareti ve Tooltip) */
-        .visitor-counter {
-            position: fixed;
-            bottom: 25px; left: 25px;
-            z-index: 20;
-            display: flex; align-items: center; gap: 10px;
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.7);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 18px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            cursor: help;
-            transition: 0.3s;
-        }
-
-        .visitor-counter:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        /* Tooltip (Açıklama Kutusu) */
-        .visitor-counter::after {
-            content: "tanırlar brom";
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #fff;
-            color: #000;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
-        }
-
-        .visitor-counter:hover::after {
-            opacity: 1;
-            visibility: visible;
-            bottom: 60px;
-        }
-
-        @keyframes fall {
-            from { transform: translateY(0vh); }
-            to { transform: translateY(115vh); }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="particles"></div>
-
-    <div class="main-container">
-        <h1>Yarışamazsın.</h1>
-        <div class="social-box">
-            <a href="#" onclick="copyDiscord(event)"><i class="fab fa-discord"></i></a>
-            <a href="https://www.instagram.com/zafer4kts" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-
-    <div class="visitor-counter">
-        <i class="fas fa-eye"></i>
-        <span>?</span>
-    </div>
-
-    <script>
-        // Kar Yağışı Motoru
-        const container = document.getElementById('particles');
-        for (let i = 0; i < 75; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            const size = Math.random() * 3 + 2 + 'px';
-            p.style.width = size; p.style.height = size;
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animation = `fall ${Math.random() * 5 + 4}s linear ${Math.random() * 8}s infinite`;
-            p.style.opacity = Math.random();
-            container.appendChild(p);
-        }
-
-        // Discord Kopyala
-        function copyDiscord(e) {
-            e.preventDefault();
-            navigator.clipboard.writeText("yakandayim").then(() => {
-                alert("kullanıcı adını kopyaladım normie, koş dmye kampını kur.");
-            });
-        }
+        volumeSlider.addEventListener("input", (e) => {
+            audio.volume = e.target.value;
+        });
     </script>
 </body>
 </html>
